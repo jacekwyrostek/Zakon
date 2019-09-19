@@ -1,0 +1,8 @@
+#Photos file#
+#############
+*.png
+*.jpg
+*.jfif
+#db Files#
+##########
+*.sqlite3

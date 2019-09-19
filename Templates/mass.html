@@ -1,0 +1,40 @@
+{%extends 'main.html'%}
+
+
+{% block title %} Zajęte Terminy {% endblock %}
+{% block body %}
+<div class="card">
+  <div class="card-body">
+    <div class='row'>
+      <div class='col'>
+      <details>
+        <summary><h3>2019</h3></summary>
+          {%for mass in Mass2019 %}
+            <div class="row">
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{mass.day|date:"d E"}}</h5>
+                    <h5 class="card-title">{{mass.day|date:"l"}} {{mass.startTime}}</h5>
+                    <p class="card-text">{{mass.intention}}</p>
+                  </div>
+                </div>
+              </div>
+                <div class="col-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{mass.day|date:"d E"}}</h5>
+                      <h5 class="card-title">{{mass.day|date:"l"}} {{mass.startTime}}</h5>
+                      <p class="card-text">{{mass.intention}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {%endfor%}
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

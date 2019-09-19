@@ -1,0 +1,45 @@
+body{
+  margin-left: 10%;
+
+}
+.card{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 1%;
+}
+i{
+  color: #339966;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:#339966;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color:#26734d;
+  text-decoration: none;
+  color: #ffffff;
+}
+img{
+  width: 150px;
+  float:left;
+}
+.desc{
+  margin-left: 30px;
+}
