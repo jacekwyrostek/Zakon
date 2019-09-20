@@ -1,15 +1,15 @@
 {%extends 'main.html'%}
-
+{% load bootstrap%}
 {% block title %} Movie Edit {% endblock %}
 
 {% block body %}
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Movie</h5>
+      <h5 class="card-title">Msza</h5>
       <form role="form-horizontal" method="POST" enctype="multipart/form-data">
         {%csrf_token%}
-        {{form}}
-        <button type="submit" class="btn btn-success">Apply</button>
+        {{form|bootstrap_horizontal}}
+        <br><button type="submit" class="btn btn-success">Zatwierdź</button>
         <button onclick="location.href='{% url 'mass' %}'" type="button"class="btn btn-success">Cofnij</button>
       </form>
     </div>

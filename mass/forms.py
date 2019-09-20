@@ -3,4 +3,4 @@ from .models import Mass
 class MassForm(ModelForm):
     class Meta:
         model = Mass
-        fields=['day', 'startTime', 'intention', 'surname', 'email']
+        fields=['day', 'startTime', 'intention', 'surname', 'email','approved']

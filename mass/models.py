@@ -2,7 +2,7 @@ from django.db import models
 from datetime import date, datetime
 from django.utils import timezone
 
-
+rodo='Rodo txt'
 # Create your models here.
 class Mass(models.Model):
     hours={
@@ -16,6 +16,6 @@ class Mass(models.Model):
     intention=models.TextField(help_text='Intencja Mszy Św.', blank=True, null=True)
     surname=models.CharField(help_text='Imię i Nazwisko zamawiającego', max_length=50)
     email=models.EmailField(max_length=70,blank=True, null=True)
-    approved=models.BooleanField(default=False)
+    approved=models.BooleanField(rodo)
     class Meta:
         ordering = ['day']

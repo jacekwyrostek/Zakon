@@ -19,12 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
-from mass.views import mass, addMass
+from mass.views import addMass, availableMass, massYear
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('msze/', mass, name='mass'),
+    path('msze/', massYear, name='mass'),
     path('nowaMsza/', addMass, name='addMass'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('dostepneTerminy/', availableMass, name='availableMass'),
 ]
