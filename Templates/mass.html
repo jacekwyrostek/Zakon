@@ -3,33 +3,48 @@
 
 {% block title %} Zajęte Terminy {% endblock %}
 {% block body %}
+<!-- Msze w obecnym tygodzniu -->
 <div class="card">
   <div class="card-body">
     <div class='row'>
       <div class='col'>
       <details>
-        <summary><h3>{{year}}</h3></summary>
-          {%for massY in MassYear %}
+        <summary><h3>{{week}}. Tydzień w Roku</h3></summary>
+          {%for massW in MassWeek %}
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{massW.startTime}} {{massW.day|date:"l d E "}}</h5>
+                    <p class="card-text">{{massW.intention}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%endfor%}
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Msze w kolejnym tygodzniu -->
+<div class="card">
+  <div class="card-body">
+    <div class='row'>
+      <div class='col'>
+      <details>
+        <summary><h3>{{nextWeek}} Tydzień w Roku</h3></summary>
+          {%for mass in MassWeek1 %}
             <div class="row">
               <div class="col-6">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">{{massY.day|date:"d E"}}</h5>
-                    <h5 class="card-title">{{massY.day|date:"l"}} {{massY.startTime}}</h5>
-                    <p class="card-text">{{massY.intention}}</p>
+                    <h5 class="card-title">{{mass.startTime}} {{mass.day|date:"d E"}}</h5>
+                    <p class="card-text">{{mass.intention}}</p>
                   </div>
                 </div>
               </div>
-                <div class="col-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">{{massY.day|date:"d E"}}</h5>
-                      <h5 class="card-title">{{massY.day|date:"l"}} {{massY.startTime}}</h5>
-                      <p class="card-text">{{massY.intention}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
           {%endfor%}
         </details>
       </div>
@@ -37,37 +52,4 @@
   </div>
 </div>
 
-<div class="card">
-  <div class="card-body">
-    <div class='row'>
-      <div class='col'>
-      <details>
-        <summary><h3>{{nextYear}}</h3></summary>
-          {%for massY in MassYear1 %}
-            <div class="row">
-              <div class="col-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">{{massY.day|date:"d E"}}</h5>
-                    <h5 class="card-title">{{massY.day|date:"l"}} {{massY.startTime}}</h5>
-                    <p class="card-text">{{massY.intention}}</p>
-                  </div>
-                </div>
-              </div>
-                <div class="col-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">{{massY.day|date:"d E"}}</h5>
-                      <h5 class="card-title">{{massY.day|date:"l"}} {{massY.startTime}}</h5>
-                      <p class="card-text">{{massY.intention}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          {%endfor%}
-        </details>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}

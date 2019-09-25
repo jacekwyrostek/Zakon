@@ -1,0 +1,32 @@
+{%extends 'main.html'%}
+{% load bootstrap %}
+
+{% block title %} Zajęte Terminy {% endblock %}
+{% block body %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Zamów Mszę:</h5>
+    {% if alert != '' %}
+      <div class="alert alert-success" role="alert">
+        {{alert}}
+      </div>
+    {% endif %}
+    <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+      <!--<form method="POST" action="/search/">-->
+      {% csrf_token %}
+      {{ search|bootstrap_horizontal:'col-md-5' }}
+      <br><button type="submit">Sprawdź</button><br>
+      </form>
+    <!--</form>-->
+  </div>
+</div>
+
+{% block extra_css %}
+{{ search.media.css }}
+{% endblock %}
+
+{% block extra_js %}
+{{ search.media.js }}
+{% endblock %}
+
+{% endblock %}

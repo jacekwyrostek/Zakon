@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"
           integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="{%static 'style.css'%}">
     <title>{% block title %} {% endblock %}</title>
   </head>
@@ -20,21 +23,21 @@
         <a href="{% url 'mass' %}">Msze</a>
       </li>
       <li>
-        <a href="{% url 'availableMass' %}">Wolne Terminy</a>
-      </li>
-      <li>
         <a href="{% url 'addMass' %}">Nowa Msza</a>
       </li>
-      <li class="profile">
-        {% if user.is_authenticated %}
-          <a href="#" tabindex="-1" aria-disabled="true">{{user.username}}</a>
-        {% endif %}
+      <li>
+        <a href="{% url 'search' %}">Sprawdź Termin</a>
       </li>
       <li class="profile">
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}">LogOut</a>
         {% else %}
           <a href="{% url 'login' %}">LogIn</a>
+        {% endif %}
+      </li>
+      <li class="profile">
+        {% if user.is_authenticated %}
+          <a href="#" tabindex="-1" aria-disabled="true">{{user.username}}</a>
         {% endif %}
       </li>
     </ul>

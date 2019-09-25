@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
+    'flatpickr',
     'mass',
 ]
 
@@ -124,3 +125,10 @@ STATICFILES_DIRS = ['static']
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'mass'
 LOGOUT_REDIRECT_URL = 'mass'
+
+#Flatpicker Global settings
+FLATPICKR_SETTINGS = {
+    'options': {
+        'locale': 'pl',
+    }
+}

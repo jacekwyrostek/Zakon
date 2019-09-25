@@ -1,27 +1,24 @@
+:root {
+  --background: #ffffff;
+  --block-background:#339966;
+  --block-mark: #26734d;
+  --font-color: #ffffff;
+}
+
 body{
-  margin-left: 10%;
-  margin-right: 10%;
-}
-.card{
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 1%;
-}
-.btn{
-  margin-left: 1%;
-  margin-right: 1%;
-  margin-top: 1%;
+  margin-left: 8%;
+  margin-right: 8%;
 }
 
 i{
-  color: #339966;
+  color: var(--block-background);
 }
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color:#339966;
+  background-color: var(--block-background);
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -33,7 +30,7 @@ li {
 }
 li a {
   display: block;
-  color: #ffffff;
+  color: var(--font-color);
   font-weight: bold;
   text-align: center;
   padding: 14px 16px;
@@ -42,26 +39,53 @@ li a {
 li a:hover {
   background-color:#26734d;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--font-color);
 }
 img{
   width: 150px;
   float:left;
 }
-.profile{
-  float: right;
+.btn{
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 1%;
 }
 .cal{
   list-style-type: none;
-  background-color:#339966;
+  background-color:var(--block-background);
   display: block;
-  color: #ffffff;
+  color: var(--font-color);
   text-align: center;
   padding: 5px;
   text-decoration: none;
+  border-style: solid;
+  border-color: var(--background);
+
 }
 .cal:hover{
   background-color:#26734d;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--font-color);
+}
+.card{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 1%;
+}
+.col{
+  margin: px;
+}
+.daynames{
+  list-style-type: none;
+  background-color: var(--block-mark);
+  display: block;
+  color: var(--font-color);
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  border-style: solid;
+  border-color: var(--background);
+}
+.profile{
+  float: right;
 }
