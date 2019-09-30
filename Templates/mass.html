@@ -10,6 +10,12 @@
       <div class='col'>
       <details>
         <summary><h3>{{week}}. Tydzień w Roku</h3></summary>
+          <div class="massList">
+            {%for mass in MassSunday %}
+              <h5 class="card-title">{{mass.startTime}} {{mass.day|date:"l d E "}}</h5>
+              <p class="card-text">{{mass.intention}}</p>
+            {%endfor%}
+          </div>
           {%for massW in MassWeek %}
             <div class="row">
               <div class="col">

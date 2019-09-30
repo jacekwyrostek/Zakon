@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'flatpickr',
     'mass',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -130,5 +131,6 @@ LOGOUT_REDIRECT_URL = 'mass'
 FLATPICKR_SETTINGS = {
     'options': {
         'locale': 'pl',
+        'dateFormat': 'l d F Y'
     }
 }

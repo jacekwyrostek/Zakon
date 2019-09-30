@@ -1,0 +1,22 @@
+{%extends 'main.html'%}
+{% load bootstrap %}
+
+{% block title %} Zajęte Terminy {% endblock %}
+{% block body %}
+{% for new in news %}
+  <div class="card">
+    <div class="card-body">
+      <div class='row'>
+        <div class='col'>
+          <h6>{{new.pubDate|date:"d E Y"}}</h6>
+          <h3>{{new.title}}</h3>
+          <details>
+            <summary>{{new.txt|truncatewords:2}}</summary>
+            <p>{{new.txt}}</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endfor%}
+{% endblock %}

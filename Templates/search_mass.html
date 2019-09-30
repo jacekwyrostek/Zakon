@@ -12,12 +12,10 @@
       </div>
     {% endif %}
     <form class="form-horizontal" method="POST" enctype="multipart/form-data">
-      <!--<form method="POST" action="/search/">-->
       {% csrf_token %}
       {{ search|bootstrap_horizontal:'col-md-5' }}
       <br><button type="submit">Sprawdź</button><br>
       </form>
-    <!--</form>-->
   </div>
 </div>
 

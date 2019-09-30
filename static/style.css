@@ -86,6 +86,9 @@ img{
   border-style: solid;
   border-color: var(--background);
 }
+.massList{
+  border-top-style: solid;
+}
 .profile{
   float: right;
 }
