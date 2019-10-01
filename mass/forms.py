@@ -8,7 +8,7 @@ from mass.choices import *
 class MassForm(forms.ModelForm):
     class Meta:
         model = Mass
-        fields=['day', 'startTime', 'intention', 'surname', 'email','approved']
+        fields=['intention', 'surname', 'email']
         widgets = {
             'day': DatePickerInput(),
         }

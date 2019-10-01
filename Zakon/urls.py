@@ -27,10 +27,12 @@ from news.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('msze/', massYear, name='mass'),
-    path('nowaMsza/<int:id>', addMass, name='addMass'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('reload/', reload, name='reload'),
     url(r'search/', search, name='search'),
-    path('news/', news, name='news')
+    path('list/', massList, name='massList'),
+    path('edit/<int:id>', editMass, name='editMass'),
+    path('delete/<int:id>', deleteMass, name='deleteMass'),
+    path('news/', news, name='news'),
+
 ]

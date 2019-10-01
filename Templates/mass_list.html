@@ -1,0 +1,23 @@
+{%extends 'main.html'%}
+
+{% block title %} Msza {% endblock %}
+
+{% block body %}
+  <div class="info">
+  {%for mass in massList%}
+    <h5>Wybrano</h5>
+    <h5 class="card-title">Data: {{mass.day}}</h5>
+    <h5 class="card-title">Godzina: {{mass.startTime}}</h5>
+    <div>
+      <ul>
+        <li>
+          <a href="{% url 'editMass' mass.id %}">Dalej</a>
+        </li>
+        <li class="profile">
+          <a href="{% url 'deleteMass' mass.id %}">Cofnij</a>
+        </li>
+      </ul>
+    </div>
+  {%endfor%}
+  </div>
+{% endblock %}

@@ -1,7 +1,7 @@
 {%extends 'main.html'%}
 {% load bootstrap %}
 
-{% block title %} Movie Edit {% endblock %}
+{% block title %} Dodaj Msze {% endblock %}
 
 {% block body %}
   <div class="card">
@@ -11,7 +11,7 @@
         {%csrf_token%}
         {{ form|bootstrap_horizontal:'col-md-5' }}
         <br><button type="submit" class="btn btn-success">Zatwierdź</button>
-        <button onclick="location.href='{% url 'mass' %}'" type="button"class="btn btn-success">Cofnij</button>
+        <a href="{% url 'deleteMass' mass.id %}">Cofnij</a>
       </form>
     </div>
   </div>

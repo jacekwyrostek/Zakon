@@ -1,21 +1,41 @@
 {%extends 'main.html'%}
 {% load bootstrap %}
 
-{% block title %} Zajęte Terminy {% endblock %}
+{% block title %} Sprawdź Terminy {% endblock %}
 {% block body %}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">Zamów Mszę:</h5>
     {% if alert != '' %}
-      <div class="alert alert-success" role="alert">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{alert}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     {% endif %}
     <form class="form-horizontal" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ search|bootstrap_horizontal:'col-md-5' }}
-      <br><button type="submit">Sprawdź</button><br>
+      <br>
+      <form action='massList'>
+        <input type="submit" value='Dalej'/>
       </form>
+      <br>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Najbliższe Wolne Terminy:
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% for info in freeDate %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{info}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {%endfor%}
   </div>
 </div>
 

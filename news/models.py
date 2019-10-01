@@ -6,4 +6,4 @@ class News(models.Model):
     title=models.CharField(max_length=100)
     txt=models.TextField()
     class Meta:
-        ordering = ['pubDate']
+        ordering = ['-pubDate']
