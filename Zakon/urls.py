@@ -31,8 +31,9 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     url(r'search/', search, name='search'),
     path('list/', massList, name='massList'),
+    path('approve/', massApprove, name='massApprove'),
     path('edit/<int:id>', editMass, name='editMass'),
-    path('delete/<int:id>', deleteMass, name='deleteMass'),
+    path('delete/<int:id>', deleteMass, name='delete_Mass'),
     path('news/', news, name='news'),
 
 ]

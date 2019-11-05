@@ -8,51 +8,71 @@
   <div class="card-body">
     <div class='row'>
       <div class='col'>
-      <details>
-        <summary><h3>{{week}}. Tydzień w Roku</h3></summary>
-          <div class="massList">
-            {%for mass in MassSunday %}
-              <h5 class="card-title">{{mass.startTime}} {{mass.day|date:"l d E "}}</h5>
-              <p class="card-text">{{mass.intention}}</p>
+        <h3 class="daynames">{{week}}. Tydzień w Roku</h3>
+          <div>
+            <h4 class="daylist">{{sundayP.0.day|date:"l d E "}}</h4>
+            {%for mass in sundayP %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
             {%endfor%}
           </div>
-          {%for massW in MassWeek %}
-            <div class="row">
-              <div class="col">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">{{massW.startTime}} {{massW.day|date:"l d E "}}</h5>
-                    <p class="card-text">{{massW.intention}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {%endfor%}
-        </details>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Msze w kolejnym tygodzniu -->
-<div class="card">
-  <div class="card-body">
-    <div class='row'>
-      <div class='col'>
-      <details>
-        <summary><h3>{{nextWeek}} Tydzień w Roku</h3></summary>
-          {%for mass in MassWeek1 %}
-            <div class="row">
-              <div class="col-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">{{mass.startTime}} {{mass.day|date:"d E"}}</h5>
-                    <p class="card-text">{{mass.intention}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {%endfor%}
-        </details>
+          <div>
+            <h4 class="daylist">{{monday.0.day|date:"l d E "}}</h4>
+            {%for mass in monday %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
+            {%endfor%}
+          </div>
+          <div>
+            <h4 class="daylist">{{tuesday.0.day|date:"l d E "}}</h4>
+            {%for mass in tuesday %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
+            {%endfor%}
+          </div>
+          <div>
+            <h4 class="daylist">{{wednesday.0.day|date:"l d E "}}</h4>
+            {%for mass in wednesday %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
+            {%endfor%}
+          </div>
+          <div>
+            <h4 class="daylist">{{thursday.0.day|date:"l d E "}}</h4>
+            {%for mass in thursday %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
+            {%endfor%}
+          </div>
+          <div>
+            <h4 class="daylist">{{friday.0.day|date:"l d E "}}</h4>
+            {%for mass in friday %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
+            {%endfor%}
+          </div>
+          <div>
+            <h4 class="daylist">{{saturday.0.day|date:"l d E "}}</h4>
+            {%for mass in saturday %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
+            {%endfor%}
+          </div>
+          <div>
+            <h4 class="daylist">{{sunday.0.day|date:"l d E "}}</h4>
+            {%for mass in sunday %}
+              <h5 class="massList">{{mass.startTime}}</h5>
+              <h6 class="massList">{{mass.intention}}</h6>
+              <br>
+            {%endfor%}
+          </div>
       </div>
     </div>
   </div>

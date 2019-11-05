@@ -3,11 +3,13 @@
 {% block title %} Msza {% endblock %}
 
 {% block body %}
-  <div class="info">
+  <div>
   {%for mass in massList%}
-    <h5>Wybrano</h5>
-    <h5 class="card-title">Data: {{mass.day}}</h5>
+  <br>
+  <div class="box">
+    <h5 class="card-title">Data: {{mass.day|date:" d E Y - l"}}</h5>
     <h5 class="card-title">Godzina: {{mass.startTime}}</h5>
+    <h5 class="card-title">Intencja: {{mass.intention}}</h5>
     <div>
       <ul>
         <li>
@@ -18,6 +20,8 @@
         </li>
       </ul>
     </div>
+  </div>
   {%endfor%}
   </div>
+
 {% endblock %}

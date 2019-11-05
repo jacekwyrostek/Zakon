@@ -12,6 +12,6 @@ class Mass(models.Model):
     intention=models.TextField(verbose_name=u"Intencja:", blank=True, null=True, max_length=250)
     surname=models.CharField(verbose_name=u"Imię i Nazwisko:", max_length=50)
     email=models.EmailField(max_length=70,blank=True, null=True)
-    approved=models.CharField(rodo, max_length=50)
+    approve=models.CharField(default='Nie', verbose_name=u"Akceptacja:",choices=approv, max_length=50)
     class Meta:
         ordering = ['day', 'startTime']

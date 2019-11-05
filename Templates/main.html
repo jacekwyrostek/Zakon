@@ -44,6 +44,11 @@
       </li>
       <li class="profile">
         {% if user.is_authenticated %}
+          <a href="{% url 'massApprove' %}">Msze do akceptacji</a>
+        {% endif %}
+      </li>
+      <li class="profile">
+        {% if user.is_authenticated %}
           <a href="#" tabindex="-1" aria-disabled="true">{{user.username}}</a>
         {% endif %}
       </li>

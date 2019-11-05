@@ -37,13 +37,17 @@ li a {
   text-decoration: none;
 }
 li a:hover {
-  background-color:#26734d;
+  background-color: var(--block-mark);
   text-decoration: none;
   color: var(--font-color);
 }
 img{
   width: 150px;
   float:left;
+}
+.box{
+  border-style: solid;
+  border-color: var(--block-background);
 }
 .btn{
   margin-left: 1%;
@@ -75,6 +79,12 @@ img{
 .col{
   margin: px;
 }
+.daylist{
+  border-bottom-style: solid;
+  border-color: grey;
+  margin: 1%;
+
+}
 .daynames{
   list-style-type: none;
   background-color: var(--block-mark);
@@ -92,10 +102,11 @@ img{
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 .massList{
-  border-top-style: solid;
+  display: inline;
+  margin: 1%;
 }
 .profile{
   float: right;

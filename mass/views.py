@@ -10,18 +10,29 @@ import locale
 # List of mass
 def massYear(request):
     week=datetime.datetime.today().isocalendar()[1]
-    nextWeek=week+1
     previousWeek=week-1
-    MassWeek=Mass.objects.filter(day__week=week)
-    MassWeek1=Mass.objects.filter(day__week=nextWeek)
-    MassSunday=Mass.objects.filter(day__week=previousWeek, day__week_day=1)
+
+    sundayP = Mass.objects.filter(day__week=previousWeek, day__week_day=1, approve='Tak')
+    monday = Mass.objects.filter(day__week=week, day__week_day=2)
+    tuesday = Mass.objects.filter(day__week=week, day__week_day=3)
+    wednesday = Mass.objects.filter(day__week=week, day__week_day=4)
+    thursday = Mass.objects.filter(day__week=week, day__week_day=5)
+    friday = Mass.objects.filter(day__week=week, day__week_day=6)
+    saturday = Mass.objects.filter(day__week=week, day__week_day=7)
+    sunday = Mass.objects.filter(day__week=week, day__week_day=1)
+
+
 
     context={
-        'MassWeek':MassWeek,
-        'MassWeek1':MassWeek1,
         'week':week,
-        'nextWeek':nextWeek,
-        'MassSunday':MassSunday
+        'sundayP':sundayP,
+        'monday':monday,
+        'tuesday':tuesday,
+        'wednesday':wednesday,
+        'thursday':thursday,
+        'friday':friday,
+        'saturday':saturday,
+        'sunday':sunday
     }
     return render(request, 'mass.html', context)
 
@@ -65,6 +76,10 @@ def search(request):
 def massList(request):
     massList=Mass.objects.filter(intention=None)
     return render(request, 'mass_list.html', {'massList':massList})
+
+def massApprove(request):
+    massList=Mass.objects.exclude(intention=None or '', approve='Tak')
+    return render(request, 'mass_approve.html', {'massList':massList})
 
 def editMass(request, id):
     mass=get_object_or_404(Mass, pk=id)
