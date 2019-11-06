@@ -16,3 +16,8 @@ class MassForm(forms.ModelForm):
 class SearchForm(forms.Form):
     date=forms.DateField(label='Data', widget=DatePickerInput())
     hourList=forms.ChoiceField(label='Godzina', choices=hours)
+
+class AdminForm(forms.ModelForm):
+    class Meta:
+        model = Mass
+        fields=['approve']

@@ -13,13 +13,13 @@ def massYear(request):
     previousWeek=week-1
 
     sundayP = Mass.objects.filter(day__week=previousWeek, day__week_day=1, approve='Tak')
-    monday = Mass.objects.filter(day__week=week, day__week_day=2)
-    tuesday = Mass.objects.filter(day__week=week, day__week_day=3)
-    wednesday = Mass.objects.filter(day__week=week, day__week_day=4)
-    thursday = Mass.objects.filter(day__week=week, day__week_day=5)
-    friday = Mass.objects.filter(day__week=week, day__week_day=6)
-    saturday = Mass.objects.filter(day__week=week, day__week_day=7)
-    sunday = Mass.objects.filter(day__week=week, day__week_day=1)
+    monday = Mass.objects.filter(day__week=week, day__week_day=2, approve='Tak')
+    tuesday = Mass.objects.filter(day__week=week, day__week_day=3, approve='Tak')
+    wednesday = Mass.objects.filter(day__week=week, day__week_day=4, approve='Tak')
+    thursday = Mass.objects.filter(day__week=week, day__week_day=5, approve='Tak')
+    friday = Mass.objects.filter(day__week=week, day__week_day=6, approve='Tak')
+    saturday = Mass.objects.filter(day__week=week, day__week_day=7, approve='Tak')
+    sunday = Mass.objects.filter(day__week=week, day__week_day=1, approve='Tak')
 
 
 
@@ -46,22 +46,30 @@ def search(request):
     if search.is_valid():
         search_id=search.cleaned_data['date']
         h=search.cleaned_data['hourList']
-        try:
-            mass=Mass.objects.get(day=search_id, startTime=h)
-            for x in range (0, 30):
-                for h in hours:
-                    day=search_id+datetime.timedelta(days=x)
-                    hour=h[1]
-                    try:
-                        Mass.objects.get(day=day, startTime=h)
-                    except:
-                        z=day.strftime('%d %B %Y')
-                        date=z+' '+hour
-                        freeDate.append(date)
-            alert='Termin Zajęty'
-        except Mass.DoesNotExist:
-            mass=Mass.objects.create(day=search_id, startTime=h)
-            return redirect(massList)
+
+        if search_id.weekday()!=6 and h=='09:00' or h=='12:00':
+            alert='Niewłaściwa Godzina Wybierz 06:00 lub 18:00'
+        else:
+            try:
+                mass=Mass.objects.get(day=search_id, startTime=h)
+                a=0
+                x=0
+                while a < 5:
+                    x+=1
+                    for h in hours:
+                        day=search_id+datetime.timedelta(days=x)
+                        hour=h[1]
+                        try:
+                            Mass.objects.get(day=day, startTime=h)
+                        except:
+                            z=day.strftime('%d %B %Y')
+                            date=z+' '+hour
+                            freeDate.append(date)
+                    a+=1
+                alert='Termin Zajęty'
+            except Mass.DoesNotExist:
+                mass=Mass.objects.create(day=search_id, startTime=h)
+                return redirect(massList)
 
     context={
     'freeDate':freeDate,
@@ -77,9 +85,17 @@ def massList(request):
     massList=Mass.objects.filter(intention=None)
     return render(request, 'mass_list.html', {'massList':massList})
 
+#List of mass without approved
 def massApprove(request):
-    massList=Mass.objects.exclude(intention=None or '', approve='Tak')
+    massList=Mass.objects.filter(approve='Nie')
     return render(request, 'mass_approve.html', {'massList':massList})
+
+#Admin edit mass
+def massAdmin(request, id):
+    mass=get_object_or_404(Mass, pk=id)
+    mass.approve='Tak'
+    mass.save()
+    return redirect(massApprove)
 
 def editMass(request, id):
     mass=get_object_or_404(Mass, pk=id)

@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'search/', search, name='search'),
     path('list/', massList, name='massList'),
     path('approve/', massApprove, name='massApprove'),
+    path('approvedit/<int:id>', massAdmin, name='massAdmin'),
     path('edit/<int:id>', editMass, name='editMass'),
     path('delete/<int:id>', deleteMass, name='delete_Mass'),
     path('news/', news, name='news'),
