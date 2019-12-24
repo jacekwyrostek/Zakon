@@ -4,15 +4,14 @@ from flatpickr import DatePickerInput
 from django import forms
 from django.forms import ModelForm
 from mass.choices import *
+import datetime, time
 
 class MassForm(forms.ModelForm):
     class Meta:
         model = Mass
-        fields=['intention', 'surname', 'email']
-        widgets = {
-            'day': DatePickerInput(),
-        }
+        fields=['intention', 'surname', 'email', 'priest']
 
 class SearchForm(forms.Form):
-    date=forms.DateField(label='Data', widget=DatePickerInput())
-    hourList=forms.ChoiceField(label='Godzina', choices=hours)
+    month=forms.ChoiceField(label='Miesiąc', choices=month, initial=datetime.datetime.today().month)
+    year=forms.IntegerField(label='Rok', min_value=2019,
+    initial=datetime.datetime.today().isocalendar()[0])

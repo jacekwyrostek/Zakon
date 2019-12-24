@@ -1,39 +1,35 @@
 {%extends 'main.html'%}
 {% load bootstrap %}
 
-{% block title %} Sprawdź Terminy {% endblock %}
+{% block title %} Terminarz {% endblock %}
 {% block body %}
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Zamów Mszę:</h5>
-    {% if alert != '' %}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{alert}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    {% endif %}
+    <h5 class="card-title">Kalendarz</h5>
+
     <form class="form-horizontal" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ search|bootstrap_horizontal:'col-md-5' }}
       <br>
-      <form action='massList'>
-        <input type="submit" value='Dalej'/>
+      <form action='search_mass.html'>
+        <input type="submit" value='Pokaż'/>
       </form>
       <br>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        Najbliższe Wolne Terminy:
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% for info in freeDate %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          {{info}}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      {% for a in list %}
+        <div class="card w-75">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-11">
+                <h5 class="card-title">{{a.day}} {{a.startTime}}</h5>
+                <p class="card-text">{{a.intention}}</p>
+              </div>
+              {% if a.intention == 'Wolny Termin' %}
+                <div class="col-sm-1">
+                  <a href="{% url 'editMass' a.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
       {%endfor%}
   </div>

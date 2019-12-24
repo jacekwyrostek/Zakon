@@ -25,26 +25,13 @@
         <a href="{% url 'mass' %}">Msze w Tygodniu</a>
       </li>
       <li>
-        <a href="{% url 'news' %}">Aktualności</a>
-      </li>
-      <li>
-        <a href="{% url 'search' %}">Sprawdź Termin</a>
+        <a href="{% url 'search' %}">Terminarz</a>
       </li>
       <li class="profile">
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}">LogOut</a>
         {% else %}
           <a href="{% url 'login' %}">LogIn</a>
-        {% endif %}
-      </li>
-      <li class="profile">
-        {% if user.is_authenticated %}
-          <a href="{% url 'massList' %}">Puste Msze</a>
-        {% endif %}
-      </li>
-      <li class="profile">
-        {% if user.is_authenticated %}
-          <a href="{% url 'massApprove' %}">Msze do akceptacji</a>
         {% endif %}
       </li>
       <li class="profile">

@@ -3,6 +3,7 @@
 
 {% block title %} Zajęte Terminy {% endblock %}
 {% block body %}
+
 <!-- Msze w obecnym tygodzniu -->
 <div class="card">
   <div class="card-body">
@@ -10,72 +11,28 @@
       <div class='col'>
         <h3 class="daynames">{{week}}. Tydzień w Roku</h3>
           <div>
-            <h4 class="daylist">{{sundayP.0.day|date:"l d E "}}</h4>
-            {%for mass in sundayP %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
-          </div>
-          <div>
-            <h4 class="daylist">{{monday.0.day|date:"l d E "}}</h4>
-            {%for mass in monday %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
-          </div>
-          <div>
-            <h4 class="daylist">{{tuesday.0.day|date:"l d E "}}</h4>
-            {%for mass in tuesday %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
-          </div>
-          <div>
-            <h4 class="daylist">{{wednesday.0.day|date:"l d E "}}</h4>
-            {%for mass in wednesday %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
-          </div>
-          <div>
-            <h4 class="daylist">{{thursday.0.day|date:"l d E "}}</h4>
-            {%for mass in thursday %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
-          </div>
-          <div>
-            <h4 class="daylist">{{friday.0.day|date:"l d E "}}</h4>
-            {%for mass in friday %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
-          </div>
-          <div>
-            <h4 class="daylist">{{saturday.0.day|date:"l d E "}}</h4>
-            {%for mass in saturday %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
-          </div>
-          <div>
-            <h4 class="daylist">{{sunday.0.day|date:"l d E "}}</h4>
-            {%for mass in sunday %}
-              <h5 class="massList">{{mass.startTime}}</h5>
-              <h6 class="massList">{{mass.intention}}</h6>
-              <br>
-            {%endfor%}
+            {% for days in days %}
+            <h4 class="daylist">{{days.0.day|date:"l d E "}}</h4>
+            {% for mass in days %}
+            <div class="hour">
+              <div class="row">
+                <div class="col-sm-2">
+                  <h5 class="vertical-center">{{mass.startTime}}</h5>
+                </div>
+                <div class="col-sm-7">
+                  <h6>{{mass.intention}}</h6>
+                </div>
+                <div class="col-sm-3">
+                  <h6 class="vertical-center">{% for priest in mass.priest.all %}{{ priest }}{% endfor %}</h6>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
           </div>
       </div>
     </div>
   </div>
 </div>
-
+<button onclick="window.print()">Drukuj</button>
 {% endblock %}

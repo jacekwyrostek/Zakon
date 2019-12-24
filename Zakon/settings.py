@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'flatpickr',
     'mass',
-    'news',
+
 ]
 
 MIDDLEWARE = [

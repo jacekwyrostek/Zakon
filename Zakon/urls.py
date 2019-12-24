@@ -21,7 +21,7 @@ from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
 from mass.views import *
 from django.conf.urls import include, url
-from news.views import *
+
 
 
 urlpatterns = [
@@ -30,10 +30,9 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     url(r'search/', search, name='search'),
-    path('list/', massList, name='massList'),
-    path('approve/', massApprove, name='massApprove'),
+    url(r'edit/<int:id>', editMass, name='editMass'),
     path('edit/<int:id>', editMass, name='editMass'),
     path('delete/<int:id>', deleteMass, name='delete_Mass'),
-    path('news/', news, name='news'),
+
 
 ]

@@ -9,9 +9,11 @@ body{
   margin-left: 8%;
   margin-right: 8%;
 }
-
-i{
+i a{
   color: var(--block-background);
+}
+i a:hover{
+  color: var(--background);
 }
 ul {
   list-style-type: none;
@@ -83,7 +85,6 @@ img{
   border-bottom-style: solid;
   border-color: grey;
   margin: 1%;
-
 }
 .daynames{
   list-style-type: none;
@@ -96,6 +97,13 @@ img{
   border-style: solid;
   border-color: var(--background);
 }
+.hour{
+  margin-left:2%;
+  margin-right: 2%;
+  border-top-style: solid;
+  border-color: var(--background);
+  border-top-width: 5px;
+}
 .info{
   margin: 0;
   position: absolute;
@@ -104,10 +112,13 @@ img{
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
-.massList{
-  display: inline;
-  margin: 1%;
-}
 .profile{
   float: right;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
