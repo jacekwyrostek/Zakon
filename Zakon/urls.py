@@ -30,7 +30,13 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     url(r'search/', search, name='search'),
+<<<<<<< HEAD
     url(r'edit/<int:id>', editMass, name='editMass'),
+=======
+    path('list/', massList, name='massList'),
+    path('approve/', massApprove, name='massApprove'),
+    path('approvedit/<int:id>', massAdmin, name='massAdmin'),
+>>>>>>> 709408d97b184139ded6a9eb5d22fcb21bb53a45
     path('edit/<int:id>', editMass, name='editMass'),
     path('delete/<int:id>', deleteMass, name='delete_Mass'),
 
