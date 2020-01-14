@@ -11,23 +11,38 @@
       <div class='col'>
         <h3 class="daynames">{{week}}. Tydzień w Roku</h3>
           <div>
-            {% for days in days %}
-            <h4 class="daylist">{{days.0.day|date:"l d E "}}</h4>
-            {% for mass in days %}
-            <div class="hour">
-              <div class="row">
-                <div class="col-sm-2">
-                  <h5 class="vertical-center">{{mass.startTime}}</h5>
+            {% for day in days %}
+              <h4 class="daylist">{{day.0.day|date:"l d E "}}</h4>
+              {% for mass in day %}
+                <div class="hour">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <h5 class="vertical-center">{{mass.startTime}}</h5>
+                    </div>
+                    <div class="col-sm-6">
+                      <h6>{{mass.intention}}</h6>
+                    </div>
+                    <div class="col-sm-1">
+                      {%if mass.type%}
+                        <h6 class="vertical-center">{{mass.type}}</h6>
+                      {%endif%}
+                    </div>
+                    <div class="col-sm-1">
+                      <h6 class="vertical-center">{% for priest in mass.priest.all %}{{ priest }}{% endfor %}</h6>
+                    </div>
+                    <div class="col-sm-1">
+                      {%if mass.place%}
+                        <h6 class="vertical-center">{{mass.place}}</h6>
+                      {%endif%}
+                    </div>
+                    <div class="col-sm-1">
+                      {% if mass.intention == 'Wolny Termin' %}
+                        <a href="{% url 'editMass' mass.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a>
+                      {% endif %}
+                    </div>
+                  </div>
                 </div>
-                <div class="col-sm-7">
-                  <h6>{{mass.intention}}</h6>
-                </div>
-                <div class="col-sm-3">
-                  <h6 class="vertical-center">{% for priest in mass.priest.all %}{{ priest }}{% endfor %}</h6>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
+              {% endfor %}
             {% endfor %}
           </div>
       </div>

@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'bootstrapform',
     'flatpickr',
     'mass',
-
 ]
 
 MIDDLEWARE = [
@@ -117,12 +116,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+TIME_INPUT_FORMATS=['%H:%M']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ['static']
+
+MEDIA_URL='/media/'
+MEDIA_ROOT='media'
+
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'mass'
 LOGOUT_REDIRECT_URL = 'mass'
@@ -131,6 +134,10 @@ LOGOUT_REDIRECT_URL = 'mass'
 FLATPICKR_SETTINGS = {
     'options': {
         'locale': 'pl',
-        'dateFormat': 'l d F Y'
+        'dateFormat': 'l d F Y',
+        'enableTime': 'true',
+        'noCalendar': 'true',
+        'dateFormat': "H:i",
+        'time_24hr': 'true'
     }
 }

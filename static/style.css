@@ -122,3 +122,8 @@ img{
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+th {
+  background: var(--background);
+  position: sticky;
+  top: -1px;
+}

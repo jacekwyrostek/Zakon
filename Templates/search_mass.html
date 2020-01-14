@@ -3,37 +3,58 @@
 
 {% block title %} Terminarz {% endblock %}
 {% block body %}
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Kalendarz</h5>
-
-    <form class="form-horizontal" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ search|bootstrap_horizontal:'col-md-5' }}
-      <br>
-      <form action='search_mass.html'>
-        <input type="submit" value='Pokaż'/>
-      </form>
-      <br>
-      {% for a in list %}
-        <div class="card w-75">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-11">
-                <h5 class="card-title">{{a.day}} {{a.startTime}}</h5>
-                <p class="card-text">{{a.intention}}</p>
-              </div>
-              {% if a.intention == 'Wolny Termin' %}
-                <div class="col-sm-1">
-                  <a href="{% url 'editMass' a.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a>
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      {%endfor%}
-  </div>
+<div>
+  <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ search|bootstrap }}
+    <br>
+    <form action='search_mass.html'>
+      <input type="submit" value='Pokaż'/>
+    </form>
+    <br>
+  </form>
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">Dzień</th>
+      <th scope="col">Godzina</th>
+      <th scope="col">Ksiądz</th>
+      <th scope="col">Rodzaj</th>
+      <th scope="col">Miejsce</th>
+      <th scope="col">Intencja</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for a in list %}
+    <tr>
+      <td>{{a.day|date:"d"}}</td>
+      <td>{{a.day|date:"l"}}</td>
+      <td>{{a.startTime}}</td>
+      <td>{% for priest in a.priest.all %}{{ priest }}{% endfor %}</td>
+    {%if a.type%}
+      <td>{{a.type}}</td>
+    {%else%}
+      <td></td>
+    {%endif%}
+    {%if a.place%}
+      <td>{{a.place}}</td>
+    {%else%}
+      <td></td>
+    {%endif%}
+      <td width="50%">{{a.intention}}</td>
+      <td>
+      {% if a.intention == 'Wolny Termin' %}
+      <a href="{% url 'editMass' a.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a>
+      {% endif %}
+      </td>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
 
 {% block extra_css %}
 {{ search.media.css }}

@@ -11,7 +11,12 @@ from .choices import *
 # List of mass
 def massYear(request):
     week=datetime.datetime.today().isocalendar()[1]
-    previousWeek=week-1
+    year=datetime.datetime.today().isocalendar()[0]
+    if week == 1:
+        year=year-1
+        previousWeek=datetime.datetime(year, 12, 28).isocalendar()[1]
+    else:
+        previousWeek=week-1
 
     sundayP = Mass.objects.filter(day__week=previousWeek, day__week_day=1)
     monday = Mass.objects.filter(day__week=week, day__week_day=2)
@@ -24,15 +29,7 @@ def massYear(request):
     days=[sundayP, monday, tuesday, wednesday, thursday,  friday, saturday, sunday]
     context={
         'week':week,
-        'sundayP':sundayP,
-        'monday':monday,
-        'tuesday':tuesday,
-        'wednesday':wednesday,
-        'thursday':thursday,
-        'friday':friday,
-        'saturday':saturday,
-        'sunday':sunday,
-        'days':days
+        'days':days,
     }
     return render(request, 'mass.html', context)
 

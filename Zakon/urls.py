@@ -32,7 +32,4 @@ urlpatterns = [
     url(r'search/', search, name='search'),
     url(r'edit/<int:id>', editMass, name='editMass'),
     path('edit/<int:id>', editMass, name='editMass'),
-    path('delete/<int:id>', deleteMass, name='delete_Mass'),
-
-
 ]
