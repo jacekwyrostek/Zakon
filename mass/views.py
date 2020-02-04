@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
-from .models import Mass
+from .models import Mass, Confession
 from .forms import *
 from django.views import generic
 import datetime, time, calendar
@@ -30,6 +30,7 @@ def massYear(request):
     context={
         'week':week,
         'days':days,
+        'year':year,
     }
     return render(request, 'mass.html', context)
 
@@ -53,15 +54,53 @@ def search(request):
     }
     return render(request, 'search_mass.html', context)
 
-def editMass(request, id):
-    mass=get_object_or_404(Mass, pk=id)
-    form=MassForm(request.POST or None, instance=mass)
+def newMass(request):
+    form=NewMassForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect(massYear)
     return render(request, 'mass_form.html', {'form':form})
 
+def editMass(request, id):
+    alert=''
+    mass=get_object_or_404(Mass, pk=id)
+    form=MassForm(request.POST or None, instance=mass)
+    if form.is_valid():
+        d=mass.day
+        p=mass.priest
+        mass=form.save(commit = False)
+        if Mass.objects.filter(day=d, priest=p).exists():
+            alert='Wybierz innego kapłana'
+        else:
+            mass.save()
+            return redirect(massYear)
+    return render(request, 'mass_form.html', {'form':form, 'alert':alert})
+
 def deleteMass(request, id):
     mass=get_object_or_404(Mass, pk=id)
     mass.delete()
     return redirect(massYear)
+
+def confession(request):
+        week=datetime.datetime.today().isocalendar()[1]
+        year=datetime.datetime.today().isocalendar()[0]
+        if week == 1:
+            year=year-1
+            previousWeek=datetime.datetime(year, 12, 28).isocalendar()[1]
+        else:
+            previousWeek=week-1
+            sundayP = Confession.objects.filter(date__week=previousWeek, date__week_day=1)
+            monday = Confession.objects.filter(date__week=week, date__week_day=2)
+            tuesday = Confession.objects.filter(date__week=week, date__week_day=3)
+            wednesday = Confession.objects.filter(date__week=week, date__week_day=4)
+            thursday = Confession.objects.filter(date__week=week, date__week_day=5)
+            friday = Confession.objects.filter(date__week=week, date__week_day=6)
+            saturday = Confession.objects.filter(date__week=week, date__week_day=7)
+            sunday = Confession.objects.filter(date__week=week, date__week_day=1)
+            days=[sundayP, monday, tuesday, wednesday, thursday,  friday, saturday, sunday]
+            context={
+                'week':week,
+                'days':days,
+                'year':year,
+            }
+            return render(request, 'confession.html', context)

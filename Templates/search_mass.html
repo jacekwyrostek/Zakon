@@ -14,37 +14,39 @@
     <br>
   </form>
 </div>
-
+<a href="{% url 'newMass' %}" class="btn btn-outline-success">Dodaj <i class="fas fa-plus-circle"></i></a>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Data</th>
-      <th scope="col">Dzień</th>
-      <th scope="col">Godzina</th>
-      <th scope="col">Ksiądz</th>
-      <th scope="col">Rodzaj</th>
-      <th scope="col">Miejsce</th>
-      <th scope="col">Intencja</th>
-      <th scope="col"></th>
+      <th class="thSticky" scope="col">Data</th>
+      <th class="thSticky" scope="col">Dzień</th>
+      <th class="thSticky" scope="col">Godzina</th>
+      <th class="thSticky" scope="col">Ksiądz</th>
+      <th class="thSticky" scope="col">Rodzaj</th>
+      <th class="thSticky" scope="col">Miejsce</th>
+      <th class="thSticky" scope="col">Intencja</th>
+      <th class="thSticky" scope="col"></th>
     </tr>
   </thead>
   <tbody>
   {% for a in list %}
     <tr>
-      <td>{{a.day|date:"d"}}</td>
+      <td>{{a.day|date:"d E"}}</td>
       <td>{{a.day|date:"l"}}</td>
       <td>{{a.startTime}}</td>
-      <td>{% for priest in a.priest.all %}{{ priest }}{% endfor %}</td>
-    {%if a.type%}
+      {% if a.priest %}
+      <td>{{ a.priest }}</td>
+      {% endif %}
+      {% if a.type %}
       <td>{{a.type}}</td>
-    {%else%}
+      {% else %}
       <td></td>
-    {%endif%}
-    {%if a.place%}
+      {% endif %}
+      {% if a.place %}
       <td>{{a.place}}</td>
-    {%else%}
+      {% else %}
       <td></td>
-    {%endif%}
+      {% endif %}
       <td width="50%">{{a.intention}}</td>
       <td>
       {% if a.intention == 'Wolny Termin' %}

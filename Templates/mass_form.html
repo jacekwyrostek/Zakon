@@ -4,23 +4,30 @@
 {% block title %} Dodaj Msze {% endblock %}
 
 {% block body %}
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Zamów Mszę:</h5>
-      <form class="form-horizontal" method="POST" enctype="multipart/form-data">
-        {%csrf_token%}
-        {{ form|bootstrap_horizontal:'col-md-5' }}
-        <br><button type="submit" class="btn btn-success">Zatwierdź</button>
-      </form>
-    </div>
+{% if alert != '' %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{alert}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Zamów Mszę:</h5>
+    <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+      {{ form|bootstrap_horizontal:'col-md-5' }}
+      <br><button type="submit" class="btn btn-success">Zatwierdź</button>
+    </form>
   </div>
+</div>
 
-{% block extra_css %}
-{{ form.media.css }}
-{% endblock %}
-
-{% block extra_js %}
-{{ form.media.js }}
-{% endblock %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block extrahead %}   {# Extra Resources Start #}
+{{ form.media }}        {# Form required JS and CSS #}
+{% endblock %}          {# Extra Resources End #}
 
 {% endblock %}

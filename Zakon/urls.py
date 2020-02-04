@@ -26,10 +26,12 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('msze/', massYear, name='mass'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('msze/', massYear, name='mass'),
+    path('nowy/', newMass, name='newMass'),
     url(r'search/', search, name='search'),
     url(r'edit/<int:id>', editMass, name='editMass'),
     path('edit/<int:id>', editMass, name='editMass'),
+    path('spowiedz/', confession, name='confession'),
 ]

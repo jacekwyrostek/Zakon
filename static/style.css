@@ -15,38 +15,15 @@ i a{
 i a:hover{
   color: var(--background);
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: var(--block-background);
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-}
-li {
-  float: left;
-  top:50%
-
-}
-li a {
-  display: block;
-  color: var(--font-color);
-  font-weight: bold;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-li a:hover {
-  background-color: var(--block-mark);
-  text-decoration: none;
-  color: var(--font-color);
-}
 img{
   width: 150px;
   float:left;
 }
+
+
+/* Classes */
+/* A */
+/* B */
 .box{
   border-style: solid;
   border-color: var(--block-background);
@@ -56,6 +33,8 @@ img{
   margin-right: 1%;
   margin-top: 1%;
 }
+
+/* C */
 .cal{
   list-style-type: none;
   background-color:var(--block-background);
@@ -81,6 +60,8 @@ img{
 .col{
   margin: px;
 }
+
+/* D */
 .daylist{
   border-bottom-style: solid;
   border-color: grey;
@@ -97,6 +78,8 @@ img{
   border-style: solid;
   border-color: var(--background);
 }
+
+/* H */
 .hour{
   margin-left:2%;
   margin-right: 2%;
@@ -104,6 +87,8 @@ img{
   border-color: var(--background);
   border-top-width: 5px;
 }
+
+/* I */
 .info{
   margin: 0;
   position: absolute;
@@ -112,9 +97,50 @@ img{
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
+
+/* L */
+.liLeft {
+  float: left;
+  top:50%
+}
+.liLink{
+  display: block;
+  color: var(--font-color);
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.liLink:hover {
+  background-color: var(--block-mark);
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+/* P */
 .profile{
   float: right;
 }
+/* T*/
+.thSticky {
+  background: var(--background);
+  position: sticky;
+  top: -1px;
+}
+
+/* U */
+.ulHeader {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--block-background);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+/* V */
 .vertical-center {
   margin: 0;
   position: absolute;
@@ -122,8 +148,9 @@ img{
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-th {
-  background: var(--background);
-  position: sticky;
-  top: -1px;
+
+
+@media print
+{
+.noprint {display:none;}
 }

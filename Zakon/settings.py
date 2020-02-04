@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
-    'flatpickr',
+    'bootstrap4',
+    'bootstrap_datepicker_plus',
     'mass',
 ]
 
@@ -72,6 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Zakon.wsgi.application'
 
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -116,7 +120,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-TIME_INPUT_FORMATS=['%H:%M']
+#TIME_INPUT_FORMATS=['%H:%M']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -134,10 +138,10 @@ LOGOUT_REDIRECT_URL = 'mass'
 FLATPICKR_SETTINGS = {
     'options': {
         'locale': 'pl',
-        'dateFormat': 'l d F Y',
-        'enableTime': 'true',
-        'noCalendar': 'true',
-        'dateFormat': "H:i",
+        'dateFormat': 'l d F Y H:i',
+        'defaultDate':'today',
+        'inline': 'true',
+        'timeFormat': "H:i",
         'time_24hr': 'true'
     }
 }

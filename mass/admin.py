@@ -17,3 +17,8 @@ class PlacesAdmin(admin.ModelAdmin):
 class MassTypeAdmin(admin.ModelAdmin):
         list_display=('massType',)
         list_filter=('massType',)
+
+@admin.register(Confession)
+class ConfessionAdmin(admin.ModelAdmin):
+        list_display=('date', 'startHour', 'endHour')
+        list_filter=('date', 'startHour', 'endHour', 'priest')
