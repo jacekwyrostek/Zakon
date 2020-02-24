@@ -31,6 +31,6 @@ class Mass(models.Model):
 # Confession model
 class Confession(models.Model):
     date=models.DateField(verbose_name=u"Data:", null=True)
-    startHour=models.TimeField(verbose_name=u'Godzina')
-    endHour=models.TimeField(verbose_name=u'Godzina')
-    priest=models.ManyToManyField(User, blank=True, unique_for_date='day')
+    startHour=models.TimeField(verbose_name=u'Godzina Rozpoczęcia')
+    endHour=models.TimeField(verbose_name=u'Godzina Zakończenia')
+    priest=models.ForeignKey(User, verbose_name=u'Kapłan', blank=True, on_delete=models.PROTECT, null=True)

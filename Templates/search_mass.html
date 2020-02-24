@@ -14,7 +14,9 @@
     <br>
   </form>
 </div>
+{% if user.is_authenticated %}
 <a href="{% url 'newMass' %}" class="btn btn-outline-success">Dodaj <i class="fas fa-plus-circle"></i></a>
+{% endif %}
 <table class="table">
   <thead>
     <tr>
@@ -50,7 +52,9 @@
       <td width="50%">{{a.intention}}</td>
       <td>
       {% if a.intention == 'Wolny Termin' %}
-      <a href="{% url 'editMass' a.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'editMass' a.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a>
+        {% endif %}
       {% endif %}
       </td>
     </tr>

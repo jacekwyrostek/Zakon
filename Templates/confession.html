@@ -2,10 +2,12 @@
 
 
 {% block title %} {{week}}. Tydzień w Roku {{year}}{% endblock %}
-
 {% block body %}
 
-<!-- Msze w obecnym tygodzniu -->
+<!-- Spowiedzi w obecnym tygodzniu -->
+{% if user.is_authenticated %}
+<a href="{% url 'newConfession' %}" class="btn btn-outline-success">Dodaj <i class="fas fa-plus-circle"></i></a>
+{% endif %}
 <div class="card">
   <div class="card-body">
     <div class='row'>
@@ -19,22 +21,14 @@
             </tr>
           </thead>
           <tbody>
-            {% for mass in day %}
+            {% for confes in day %}
             <tr>
-              <td>{{mass.startTime}}</td>
-              <td>{{mass.intention}}</td>
-              {%if mass.type%}
-              <td>{{mass.type}}</td>
+              <td>{{confes.date}}</td>
+              <td>{{confes.startHour}}</td>
+              <td>{{confes.endHour}}</td>
+              {%if confes.priest%}
+              <td>{{confes.priest}}</td>
               {%endif%}
-              {%if mass.priest%}
-              <td>{{mass.priest}}</td>
-              {%endif%}
-              {%if mass.place%}
-              <td>{{mass.place}}</td>
-              {%endif%}
-              {% if mass.intention == 'Wolny Termin' %}
-              <td><a href="{% url 'editMass' mass.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a></td>
-              {% endif %}
             </tr>
             {% endfor %}
           </tbody>

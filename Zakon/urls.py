@@ -34,4 +34,5 @@ urlpatterns = [
     url(r'edit/<int:id>', editMass, name='editMass'),
     path('edit/<int:id>', editMass, name='editMass'),
     path('spowiedz/', confession, name='confession'),
+    path('nowaSpowiedz/', newConfession, name='newConfession')
 ]

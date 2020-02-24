@@ -1,6 +1,7 @@
 {%extends 'main.html'%}
+{% load bootstrap %}
 
-{% block title %} Dodaj Msze {% endblock %}
+{% block title %} Dodaj Spowiedź {% endblock %}
 
 {% block body %}
 {% if alert  %}
@@ -15,11 +16,11 @@
 {% endif %}
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Zamów Mszę:</h5>
+    <h5 class="card-title">Spowiedź:</h5>
     <form class="form-horizontal" method="POST" enctype="multipart/form-data">
       {%csrf_token%}
       {{ form.as_p }}
-      {{ form.errors}}
+      {{form.errors}}
       <br><button type="submit" class="btn btn-success">Zatwierdź</button>
     </form>
   </div>

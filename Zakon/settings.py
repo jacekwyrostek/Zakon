@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrapform',
     'bootstrap4',
     'bootstrap_datepicker_plus',
     'mass',
@@ -138,7 +137,7 @@ LOGOUT_REDIRECT_URL = 'mass'
 FLATPICKR_SETTINGS = {
     'options': {
         'locale': 'pl',
-        'dateFormat': 'l d F Y H:i',
+        'dateFormat': 'l d F Y',
         'defaultDate':'today',
         'inline': 'true',
         'timeFormat': "H:i",

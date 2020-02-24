@@ -1,6 +1,5 @@
 {%extends 'main.html'%}
 
-
 {% block title %} {{week}}. Tydzień w Roku {{year}} {% endblock %}
 {% block body %}
 
@@ -31,9 +30,13 @@
               {%if mass.place%}
               <td>{{mass.place}}</td>
               {%endif%}
+              <td>
               {% if mass.intention == 'Wolny Termin' %}
-              <td><a href="{% url 'editMass' mass.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a></td>
+                {% if user.is_authenticated %}
+                  <a href="{% url 'editMass' mass.id %}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></a>
+                {% endif %}
               {% endif %}
+              </td>
             </tr>
             {% endfor %}
           </tbody>
