@@ -40,4 +40,4 @@ To run at localhost. It will run on port 8000 by default.
 python manage.py runserver
 ```
 
-You can start on  http://127.0.0.1:8000/msze/
+You can start on  http://127.0.0.1:8000/search/ and click on "Pokaż"
