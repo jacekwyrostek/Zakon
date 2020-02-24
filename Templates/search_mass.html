@@ -1,12 +1,11 @@
 {%extends 'main.html'%}
-{% load bootstrap %}
 
 {% block title %} Terminarz {% endblock %}
 {% block body %}
 <div>
   <form class="form-horizontal" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ search|bootstrap }}
+    {{ search.as_p }}
     <br>
     <form action='search_mass.html'>
       <input type="submit" value='Pokaż'/>
