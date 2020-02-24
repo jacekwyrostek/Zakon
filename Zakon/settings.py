@@ -130,7 +130,7 @@ MEDIA_URL='/media/'
 MEDIA_ROOT='media'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'mass'
+LOGIN_REDIRECT_URL = 'search'
 LOGOUT_REDIRECT_URL = 'mass'
 
 #Flatpicker Global settings
